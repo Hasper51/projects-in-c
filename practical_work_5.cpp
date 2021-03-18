@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include <iomanip>
+#include<locale.h>
 using namespace std;
 void f1(void);
 void f2(void);
@@ -8,7 +9,7 @@ void f3(void);
 void f4(void);
 void f5(void);
 int main(){
-
+    setlocale(LC_ALL,"Russian");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     int n;
