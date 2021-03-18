@@ -13,7 +13,7 @@ int main(){
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     int n;
-    cout<<"Введите номер задачи(1-4)"<<endl;
+    cout<<"Введите номер задачи(1-5)"<<endl;
     cin>>n;
     switch(n)
     {
@@ -21,7 +21,7 @@ int main(){
     case 2: cout<<"\tЗадача 2.1"<<endl; f2(); break;
     case 3: cout<<"\tЗадача 3"<<endl; f3(); break;
     case 4: cout<<"\tЗадача 4"<<endl; f4(); break;
-    //case 5: cout<<"\tЗадача 5"<<endl; f5(); break;
+    case 5: cout<<"\tЗадача 5"<<endl; f5(); break;
     }
 
 }
@@ -200,4 +200,54 @@ void f4(void){
             cout<<"C["<<i<<"] = "<<C[i]<<endl;
         }
     }
+}
+void f5(void){
+    int tab[9][9] ={{1,2,3,4,5,6,7,8,9},
+                    {4,5,6,7,8,9,1,2,3},
+                    {7,8,9,1,2,3,4,5,6},
+                    {2,3,4,5,6,7,8,9,1},
+                    {6,7,8,9,1,2,3,4,5},
+                    {8,9,1,2,3,4,5,6,7},
+                    {3,4,5,6,7,8,9,1,2},
+                    {6,7,8,9,1,2,3,4,5},
+                    {9,1,2,3,4,5,6,7,8}};
+    // таблица как-нибудь заполняется
+    int fail = 0;  // вначале полагаем, что в таблице все четко
+
+    for (int i = 0; i < 9 && !fail; i++) {
+    int p[9] = {}; // 0 числа нет, 1 число есть
+    for (int j = 0; j < 9 && !fail; j++) {
+        if (p[tab[i][j] - 1] == 0)
+            p[tab[i][j] - 1] = 1;
+        else
+            fail = 1;  // два одинаковых числа в строке
+    }
+    }
+    for (int i = 0; i < 9 && !fail; ++i) {
+    int p[9] = {};
+    int j;
+    for (j = 0; j < 9 && !fail; ++j) {
+        if (p[tab[j][i] - 1] == 0)
+            p[tab[j][i] - 1] = 1;
+        else
+            fail = 1;  // два одинаковых числа в столбце
+    }
+    }
+    for (int i = 0; i < 9 && !fail; i+=3) {
+    for (int j = 0; j < 9 && !fail; j+=3) {
+        int p[9] = {};
+        int ik;
+        for (ik = i; ik < i+3 && !fail; ++ik) {
+            int jk;
+            for (jk = j; jk < j+3 && !fail; ++jk) {
+            if (p[tab[ik][jk] - 1] == 0)
+                p[tab[ik][jk] - 1] = 1;
+            else
+                    fail = 1;  // два одинаковых числа в квадрате - секторе
+            }
+        }
+    }
+    }
+    if (!fail) printf("все заполнено правильно\n");
+    else printf("заполнено не правильно или еще не заполнено\n");
 }
