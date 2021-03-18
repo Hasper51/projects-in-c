@@ -20,7 +20,7 @@ int main(){
     case 2: cout<<"\tЗадача 2.1"<<endl; f2(); break;
     case 3: cout<<"\tЗадача 3"<<endl; f3(); break;
     case 4: cout<<"\tЗадача 4"<<endl; f4(); break;
-    case 5: cout<<"\tЗадача 5"<<endl; f5(); break;
+    //case 5: cout<<"\tЗадача 5"<<endl; f5(); break;
     }
 
 }
